@@ -2,13 +2,11 @@
 <resources>
     <string name="app_name">QR Alarm</string>
 
-    <!-- Main screen -->
     <string name="no_alarms_yet">Henüz alarm eklenmedi.\nEklemek için + butonuna dokunun.</string>
     <string name="edit">Düzenle</string>
     <string name="delete">Sil</string>
     <string name="one_time_alarm">Bir kez</string>
 
-    <!-- Add/Edit alarm -->
     <string name="add_alarm">Alarm Ekle</string>
     <string name="edit_alarm">Alarmı Düzenle</string>
     <string name="alarm_time">Alarm Saati</string>
@@ -24,8 +22,7 @@
     <string name="vibrate">Titreşim</string>
     <string name="alarm_sound">Alarm Sesi</string>
     <string name="no_sound_selected">Varsayılan alarm sesi</string>
-    <string name="pick_sound">Ses Seç</string>
-    <string name="choose_sound_source">Ses kaynağı seçin</string>
+    <string name="pick_sound">Ses Seç</string> <string name="choose_sound_source">Ses kaynağı seçin</string>
     <string name="pick_from_ringtones">Sistem Sesleri</string>
     <string name="pick_from_files">Dosyalardan Seç (MP3 vb.)</string>
     <string name="qr_section_title">QR / Barkod ile Kapatma</string>
@@ -36,7 +33,6 @@
     <string name="alarm_saved">Alarm kaydedildi</string>
     <string name="alarm_updated">Alarm güncellendi</string>
 
-    <!-- QR Setup -->
     <string name="setup_qr_title">QR / Barkod Ayarla</string>
     <string name="qr_setup_instructions">Alarmı kapatmak için kullanıcının okutması gereken QR kodu veya barkodu tarayın, ya da kodun değerini elle girin. Bu kod, alarmı kapatmanın TEK YOLUDUR.</string>
     <string name="scan_to_set">Tarayarak Ayarla</string>
@@ -50,7 +46,6 @@
     <string name="qr_code_empty_warning">Kod boş — alarm kapatma kısıtlaması olmayacak</string>
     <string name="clear">Temizle</string>
 
-    <!-- Alarm Ring Screen -->
     <string name="alarm_ringing">Alarm Çalıyor</string>
     <string name="scan_qr_to_dismiss">Kapatmak için QR/Barkod okutun</string>
     <string name="scan_to_dismiss">Alarmı kapatmak için doğru QR/Barkodu tarayın</string>
@@ -63,27 +58,20 @@
     <string name="wrong_code">Yanlış kod! Doğru QR/Barkodu okutun.</string>
     <string name="dismiss_no_qr">Kapat</string>
 
-    <!-- Permissions -->
     <string name="exact_alarm_permission_needed">Alarmların tam zamanında çalması için izin gerekiyor</string>
     <string name="battery_optimization_needed">Alarmların güvenilir çalması için pil optimizasyonundan muaf tutulması gerekiyor</string>
     <string name="grant">İzin Ver</string>
 
-    <!-- Ringing protections -->
     <string name="cannot_delete_while_ringing">Alarm çalarken silinemez</string>
     <string name="cannot_disable_while_ringing">Alarm çalarken kapatılamaz</string>
 
-    <!-- Notification -->
     <string name="alarm_channel_name">Alarm Bildirimleri</string>
     <string name="alarm_channel_desc">Alarm çalarken gösterilen bildirimler</string>
 
-    <!-- Stage labels -->
     <string name="stage1_label">Aşama 1 — Sakin</string>
     <string name="stage2_label">Aşama 2 — Orta</string>
     <string name="stage3_label">Aşama 3 — Güçlü</string>
 
-    <!-- Sound picker -->
     <string name="use_synthesized_sound">Sentezlenmiş ses (varsayılan)</string>
     <string name="use_synth_short">Sentez</string>
-    <string name="pick_sound">Ses Seç</string>
-
-</resources>
+    </resources>
