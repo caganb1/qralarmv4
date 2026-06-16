@@ -89,6 +89,4 @@ public class QRSetupActivity extends AppCompatActivity {
         setResult(RESULT_OK, result);
         finish();
     }
-        return super.onOptionsItemSelected(item);
-    }
 }
