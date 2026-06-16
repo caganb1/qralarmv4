@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="56dp"
+        android:background="@color/black" android:orientation="horizontal" android:gravity="center_vertical">
+        <ImageView android:id="@+id/btn_back_qr" android:layout_width="40dp" android:layout_height="40dp"
+            android:padding="8dp" android:src="@drawable/ic_alarm" app:tint="@color/white"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Back" android:layout_marginStart="8dp"/>
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="@string/setup_qr_title"
+            android:textColor="@color/white" android:textSize="18sp" android:textStyle="bold"
+            android:letterSpacing="0.08" android:paddingStart="12dp"/>
+    </LinearLayout>
+    <View android:layout_width="match_parent" android:layout_height="4dp" android:background="@color/accent"/>
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="20dp">
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="@string/qr_setup_instructions"
+                android:textColor="@color/text_secondary" android:textSize="14sp"
+                android:lineSpacingExtra="4dp" android:layout_marginBottom="20dp"/>
+
+            <!-- Current code display -->
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:background="@color/surface" android:padding="16dp"
+                android:layout_marginBottom="20dp">
+                <TextView android:id="@+id/tv_current_qr"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="@string/no_qr_configured_setup"
+                    android:textColor="@color/primary" android:textSize="14sp"
+                    android:textStyle="bold"/>
+            </FrameLayout>
+
+            <!-- Scan button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_scan_to_set"
+                android:layout_width="match_parent" android:layout_height="56dp"
+                android:text="@string/scan_to_set" android:textSize="15sp" android:textStyle="bold"
+                android:letterSpacing="0.08" android:textColor="@color/white"
+                app:icon="@drawable/ic_qr_code" app:iconTint="@color/white"
+                app:backgroundTint="@color/accent" app:cornerRadius="0dp"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Manual entry -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:boxBackgroundColor="@color/surface"
+                app:boxCornerRadiusTopStart="0dp" app:boxCornerRadiusTopEnd="0dp"
+                app:boxCornerRadiusBottomStart="0dp" app:boxCornerRadiusBottomEnd="0dp"
+                app:boxStrokeColor="@color/black" app:boxStrokeWidth="2dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_qr_code" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:hint="@string/qr_code_hint"
+                    android:textColor="@color/text_primary" android:padding="16dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:boxBackgroundColor="@color/surface"
+                app:boxCornerRadiusTopStart="0dp" app:boxCornerRadiusTopEnd="0dp"
+                app:boxCornerRadiusBottomStart="0dp" app:boxCornerRadiusBottomEnd="0dp"
+                app:boxStrokeColor="@color/black" app:boxStrokeWidth="2dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_qr_label" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:hint="@string/qr_label_hint"
+                    android:textColor="@color/text_primary" android:padding="16dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_clear_qr"
+                    android:layout_width="0dp" android:layout_height="52dp"
+                    android:layout_weight="1" android:layout_marginEnd="8dp"
+                    android:text="@string/clear" android:textColor="@color/danger"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    app:strokeColor="@color/danger" app:strokeWidth="2dp"
+                    app:cornerRadius="0dp"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_save_qr"
+                    android:layout_width="0dp" android:layout_height="52dp"
+                    android:layout_weight="2"
+                    android:text="@string/save" android:textStyle="bold"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@color/black" app:cornerRadius="0dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Downloadable Font: Nunito from Google Fonts.
+  No file to add — Android downloads & caches it automatically on API 26+.
+  Works offline after first download.
+  Fallback chain: Nunito → sans-serif-medium → sans-serif
+-->
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:fontProviderAuthority="com.google.android.gms.fonts"
+    app:fontProviderPackage="com.google.android.gms"
+    app:fontProviderQuery="Nunito"
+    app:fontProviderCerts="@array/com_google_android_gms_fonts_certs">
+</font-family>

@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- Toolbar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/black"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="8dp">
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="44dp" android:layout_height="44dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_alarm" app:tint="@color/white"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Back"/>
+        <TextView
+            android:id="@+id/tv_toolbar_title"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/add_alarm"
+            android:textColor="@color/white" android:textSize="19sp"
+            android:textStyle="bold" android:paddingStart="8dp"/>
+    </LinearLayout>
+    <View android:layout_width="match_parent" android:layout_height="4dp"
+          android:background="@color/primary"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- ── TIME ─────────────────────────────────────────────────── -->
+            <LinearLayout
+                android:id="@+id/btn_pick_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@color/primary"
+                android:paddingVertical="28dp"
+                android:layout_marginBottom="16dp"
+                android:foreground="?attr/selectableItemBackground">
+                <TextView
+                    android:id="@+id/tv_selected_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="07:00"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/alarm_time"
+                    android:textColor="#AACCFF"
+                    android:textSize="12sp"
+                    android:letterSpacing="0.12"/>
+            </LinearLayout>
+
+            <!-- ── LABEL ─────────────────────────────────────────────────── -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxStrokeColor="@color/primary"
+                app:hintTextColor="@color/text_secondary">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/label_hint"
+                    android:textColor="@color/text_primary"
+                    android:fontFamily="sans-serif-medium"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ── DAYS ──────────────────────────────────────────────────── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/repeat_days"
+                android:textColor="@color/text_secondary"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.12"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+                <CheckBox android:id="@+id/cb_mon" style="@style/DayCheckbox" android:text="@string/day_mon"/>
+                <CheckBox android:id="@+id/cb_tue" style="@style/DayCheckbox" android:text="@string/day_tue"/>
+                <CheckBox android:id="@+id/cb_wed" style="@style/DayCheckbox" android:text="@string/day_wed"/>
+                <CheckBox android:id="@+id/cb_thu" style="@style/DayCheckbox" android:text="@string/day_thu"/>
+                <CheckBox android:id="@+id/cb_fri" style="@style/DayCheckbox" android:text="@string/day_fri"/>
+                <CheckBox android:id="@+id/cb_sat" style="@style/DayCheckbox" android:text="@string/day_sat"/>
+                <CheckBox android:id="@+id/cb_sun" style="@style/DayCheckbox" android:text="@string/day_sun"/>
+            </LinearLayout>
+
+            <!-- ── SOUND: STAGE 1 (Calm) ─────────────────────────────────── -->
+            <include layout="@layout/item_sound_stage"
+                android:id="@+id/stage_calm_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- We can't pass args to include, so we reference IDs directly -->
+            <!-- Using manually embedded cards for 3 stages -->
+
+            <!-- Stage 1 card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                android:layout_marginBottom="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="6dp">
+                        <View android:layout_width="12dp" android:layout_height="12dp"
+                              android:background="@color/primary"
+                              android:layout_marginEnd="10dp"/>
+                        <TextView
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/stage1_label"
+                            android:textColor="@color/text_primary"
+                            android:textSize="14sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="0–2 min"
+                            android:textColor="@color/text_secondary" android:textSize="12sp"/>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_sound_calm"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="@string/use_synthesized_sound"
+                        android:textColor="@color/text_secondary" android:textSize="13sp"
+                        android:layout_marginBottom="10dp" android:maxLines="1"
+                        android:ellipsize="end"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_pick_calm"
+                            android:layout_width="0dp" android:layout_height="40dp"
+                            android:layout_weight="1" android:layout_marginEnd="8dp"
+                            android:text="@string/pick_sound"
+                            android:textSize="13sp" android:textColor="@color/white"
+                            app:backgroundTint="@color/primary" app:cornerRadius="20dp"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_clear_calm"
+                            android:layout_width="wrap_content" android:layout_height="40dp"
+                            android:text="@string/use_synth_short"
+                            android:textSize="12sp" android:textColor="@color/text_secondary"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            app:strokeColor="@color/surface_light"
+                            app:cornerRadius="20dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Stage 2 card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                android:layout_marginBottom="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="6dp">
+                        <View android:layout_width="12dp" android:layout_height="12dp"
+                              android:background="@color/accent_yellow"
+                              android:layout_marginEnd="10dp"/>
+                        <TextView
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/stage2_label"
+                            android:textColor="@color/text_primary"
+                            android:textSize="14sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="2–4 min"
+                            android:textColor="@color/text_secondary" android:textSize="12sp"/>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_sound_medium"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="@string/use_synthesized_sound"
+                        android:textColor="@color/text_secondary" android:textSize="13sp"
+                        android:layout_marginBottom="10dp" android:maxLines="1"
+                        android:ellipsize="end"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_pick_medium"
+                            android:layout_width="0dp" android:layout_height="40dp"
+                            android:layout_weight="1" android:layout_marginEnd="8dp"
+                            android:text="@string/pick_sound"
+                            android:textSize="13sp" android:textColor="@color/white"
+                            app:backgroundTint="@color/accent_yellow"
+                            app:cornerRadius="20dp"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_clear_medium"
+                            android:layout_width="wrap_content" android:layout_height="40dp"
+                            android:text="@string/use_synth_short"
+                            android:textSize="12sp" android:textColor="@color/text_secondary"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            app:strokeColor="@color/surface_light"
+                            app:cornerRadius="20dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Stage 3 card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                android:layout_marginBottom="20dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="6dp">
+                        <View android:layout_width="12dp" android:layout_height="12dp"
+                              android:background="@color/accent"
+                              android:layout_marginEnd="10dp"/>
+                        <TextView
+                            android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/stage3_label"
+                            android:textColor="@color/text_primary"
+                            android:textSize="14sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="4–6 min"
+                            android:textColor="@color/text_secondary" android:textSize="12sp"/>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_sound_loud"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="@string/use_synthesized_sound"
+                        android:textColor="@color/text_secondary" android:textSize="13sp"
+                        android:layout_marginBottom="10dp" android:maxLines="1"
+                        android:ellipsize="end"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_pick_loud"
+                            android:layout_width="0dp" android:layout_height="40dp"
+                            android:layout_weight="1" android:layout_marginEnd="8dp"
+                            android:text="@string/pick_sound"
+                            android:textSize="13sp" android:textColor="@color/white"
+                            app:backgroundTint="@color/accent" app:cornerRadius="20dp"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_clear_loud"
+                            android:layout_width="wrap_content" android:layout_height="40dp"
+                            android:text="@string/use_synth_short"
+                            android:textSize="12sp" android:textColor="@color/text_secondary"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            app:strokeColor="@color/surface_light"
+                            app:cornerRadius="20dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ── QR ─────────────────────────────────────────────────────── -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                android:layout_marginBottom="24dp"
+                android:foreground="?attr/selectableItemBackground">
+                <LinearLayout
+                    android:id="@+id/btn_setup_qr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/qr_section_title"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="11sp" android:textStyle="bold"
+                        android:letterSpacing="0.12"
+                        android:layout_marginBottom="6dp"/>
+                    <TextView
+                        android:id="@+id/tv_qr_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/qr_not_set"
+                        android:textColor="@color/danger"
+                        android:textSize="15sp"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ── SAVE ───────────────────────────────────────────────────── -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_save_alarm"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="@string/save"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/black"
+                app:cornerRadius="28dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
